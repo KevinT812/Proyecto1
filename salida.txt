@@ -1,0 +1,20 @@
+Token: DeclaracionDoctype | Lexema: <!DOCTYPE html>
+Token: EtiquetaApertura | Lexema: <html>
+Token: EtiquetaApertura | Lexema: <head>
+Token: EtiquetaApertura | Lexema: <title>
+Token: Contenido | Lexema: Mi Página
+Token: EtiquetaCierre | Lexema: </title>
+Token: EtiquetaCierre | Lexema: </head>
+Token: EtiquetaApertura | Lexema: <body>
+Token: EtiquetaApertura | Lexema: <h1 class="titulo">
+Token: Contenido | Lexema:  Bienvenidos
+Token: EtiquetaCierre | Lexema: </h1>
+Token: EtiquetaApertura | Lexema: <p id="intro">
+Token: Contenido | Lexema:  Esta es una página de prueba.
+Token: EtiquetaCierre | Lexema: </p>
+Token: Comentario | Lexema: <!-- Esto es un comentario -->
+Token: EtiquetaApertura | Lexema: <a href="https://example.com">
+Token: Contenido | Lexema:  Enlace
+Token: EtiquetaCierre | Lexema: </a>
+Token: EtiquetaCierre | Lexema: </body>
+Token: EtiquetaCierre | Lexema: </html>

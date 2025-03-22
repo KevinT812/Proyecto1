@@ -19,7 +19,13 @@ import static codigo.Tokens.*;
 LETRA = [a-zA-Z]
 DIGITO = [0-9]
 ESPACIO = [ \t\r\n]+
-TEXTO = {LETRA}+
+TEXTO = {LETRA}({LETRA}|{DIGITO})*
+
+// Atributos en etiquetas HTML
+ATRIBUTO_NOMBRE = [a-zA-Z]([a-zA-Z0-9_-])*
+ATRIBUTO_VALOR = "\"[^\"]*\""
+ATRIBUTO = {ATRIBUTO_NOMBRE} "=" {ATRIBUTO_VALOR}
+
 ETIQUETA_APERTURA = "<"{TEXTO}({ESPACIO}+{ATRIBUTO})*">"
 ETIQUETA_CIERRE = "</"{TEXTO}">"
 ATRIBUTO = {LETRA}({LETRA}|{DIGITO}|[-_])*=\"[^\"]*\"
@@ -34,11 +40,12 @@ DECLARACION_DOCTYPE = "<!DOCTYPE"[^>]+">"
 // Reglas léxicas
 {DECLARACION_DOCTYPE}  { lexeme = yytext(); return DeclaracionDoctype; }
 {ETIQUETA_APERTURA}    { lexeme = yytext(); return EtiquetaApertura; }
-{ETIQUETA_CIERRE}      { lexeme = yytext(); return EtiquetaCierre; }
 {ATRIBUTO}             { lexeme = yytext(); return Atributo; }
+{ETIQUETA_CIERRE}      { lexeme = yytext(); return EtiquetaCierre; }
 {COMENTARIO}           { lexeme = yytext(); return Comentario; }
 {ENTIDAD_HTML}         { lexeme = yytext(); return EntidadHTML; }
 {CONTENIDO}            { lexeme = yytext(); return Contenido; }
+{ATRIBUTO_NOMBRE}      {ATRIBUTO_VALOR} { lexeme = yytext(); return Atributo; }
 {ESPACIO}              { /* Ignorar espacios */ }
 <<EOF>>                { return EOF; }
 

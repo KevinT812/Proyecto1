@@ -5,6 +5,8 @@
 package codigo;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
 
 /**
@@ -16,7 +18,7 @@ public class Main {
         try {
             // Verifica si se proporcionó un archivo de entrada
             if (args.length == 0) {
-                System.out.println("Uso: java codigo.Main <entrada.html>");
+                System.out.println("Uso: java codigo.Main <entrada.txt>");
                 return;
             }
 
@@ -25,18 +27,23 @@ public class Main {
             FileReader reader = new FileReader(archivoEntrada);
             Lexer lexer = new Lexer(reader);
 
+            // Crea un archivo de salida
+            BufferedWriter writer = new BufferedWriter(new FileWriter("salida.txt"));
+
             // Analiza el archivo
             Tokens token;
             while ((token = lexer.yylex()) != Tokens.EOF) {
-                System.out.println("Token: " + token + " | Lexema: " + lexer.lexeme);
+                String output = "Token: " + token + " | Lexema: " + lexer.lexeme;
+                System.out.println(output); // Opcional: sigue imprimiendo en consola
+                writer.write(output);
+                writer.newLine();
             }
 
-            // Cierra el archivo
+            // Cierra los archivos
             reader.close();
+            writer.close();
         } catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
+            System.err.println("Error al leer o escribir el archivo: " + e.getMessage());
         }
     }
-    
-    
 }

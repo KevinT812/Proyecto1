@@ -17,6 +17,5 @@ public enum Tokens {
     EntidadHTML,
     Contenido,
     EOF,
-    FinEtiqueta,
     ERROR
 }
