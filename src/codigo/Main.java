@@ -37,6 +37,10 @@ public class Main {
                 System.out.println(output); // Opcional: sigue imprimiendo en consola
                 writer.write(output);
                 writer.newLine();
+                
+            if (token == Tokens.EtiquetaApertura) {
+                procesarAtributos(lexer.lexeme, writer);
+                }
             }
 
             // Cierra los archivos
@@ -44,6 +48,18 @@ public class Main {
             writer.close();
         } catch (IOException e) {
             System.err.println("Error al leer o escribir el archivo: " + e.getMessage());
+        }
+    }
+    public static void procesarAtributos(String lexema, BufferedWriter writer) throws IOException {
+        String[] partes = lexema.replace("<", "").replace(">", "").split("\\s+");
+        for (String parte : partes) {
+            if (parte.matches("[a-zA-Z][a-zA-Z0-9_-]*=\"[^\"]*\"")) {
+                // Aquí tienes un atributo, puedes procesarlo
+                String output = "Token: Atributo | Lexema: " + parte ;
+                System.out.println(output); // Opcional: sigue imprimiendo en consola
+                writer.write(output);
+                writer.newLine();
+            }
         }
     }
 }

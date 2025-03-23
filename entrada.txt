@@ -4,9 +4,9 @@
     <title>Mi Página</title>
 </head>
 <body>
-    <h1 class="titulo"> Bienvenidos</h1>
-    <p id="intro"> Esta es una página de prueba.</p>
+    <h1 class="titulo">Bienvenidos</h1>
+    <p id="intro">Esta es una página de prueba.</p>
     <!-- Esto es un comentario -->
-    <a href="https://example.com"> Enlace</a>
+    <a href="https://example.com">Enlace</a>
 </body>
 </html>
